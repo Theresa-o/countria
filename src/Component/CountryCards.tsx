@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useDebounce from "../hooks/UseDebounce";
 
 export interface CountryProps {
   altSpellings?: string[] | null;
@@ -42,20 +44,35 @@ export interface Name {
   official: string;
 }
 
-const CountryCards = () => {
+const CountryCards = ({ searchQuery }: { searchQuery: string }) => {
+  const [filteredData, setFilteredData] = useState<CountryProps[]>([]);
+
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
   const { data, error, isPending } = useQuery({
-    queryKey: ["countries"],
+    queryKey: ["countries", debouncedSearchQuery],
     queryFn: () =>
-      fetch("https://restcountries.com/v3.1/all").then((res) => res.json()),
+      fetch(
+        `https://restcountries.com/v3.1/all?name=${debouncedSearchQuery}`
+      ).then((res) => res.json()),
   });
+
+  useEffect(() => {
+    if (data) {
+      const filtered = data.filter((country: CountryProps) =>
+        country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredData(filtered);
+    }
+  }, [data, searchQuery]);
 
   return (
     <div className="my-5 ">
       {isPending && <div className="text-xl font-medium">Loading posts...</div>}
       {error && <div className="text-red-700">{error.message}</div>}
+
       <div className="flex flex-wrap justify-center gap-8 my-10 mx-4 ">
-        {data &&
-          data.map(
+        {filteredData &&
+          filteredData.map(
             (
               { flags, population, region, name, capital }: CountryProps,
               index: number
