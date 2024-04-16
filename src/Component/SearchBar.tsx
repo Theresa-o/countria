@@ -7,7 +7,7 @@ interface SearchBarState {
 
 const SearchBar = ({ searchQuery, setSearchQuery }: SearchBarState) => {
   return (
-    <div className="bg-white mt-2">
+    <div className="bg-white mt-5">
       <div className="relative h-14 w-2/6 rounded px-8 shadow-black">
         <img
           className="w-4 h-4 mr-2 absolute top-4"

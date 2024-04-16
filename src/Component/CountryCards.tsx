@@ -44,7 +44,12 @@ export interface Name {
   official: string;
 }
 
-const CountryCards = ({ searchQuery }: { searchQuery: string }) => {
+interface QueryCountryCardsProps {
+  searchQuery: string;
+  filterParam: string;
+}
+
+const CountryCards = ({ searchQuery, filterParam }: QueryCountryCardsProps) => {
   const [filteredData, setFilteredData] = useState<CountryProps[]>([]);
 
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
@@ -58,12 +63,22 @@ const CountryCards = ({ searchQuery }: { searchQuery: string }) => {
 
   useEffect(() => {
     if (data) {
-      const filtered = data.filter((country: CountryProps) =>
-        country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
+      let filtered = data.filter((country: CountryProps) =>
+        country.name.common
+          .toLowerCase()
+          .includes(debouncedSearchQuery.toLowerCase())
       );
+
+      if (filterParam !== "All") {
+        filtered = filtered.filter(
+          (country: CountryProps) =>
+            country.region.toLowerCase() === filterParam.toLowerCase()
+        );
+      }
+
       setFilteredData(filtered);
     }
-  }, [data, searchQuery]);
+  }, [data, debouncedSearchQuery, filterParam]);
 
   return (
     <div className="my-5 ">

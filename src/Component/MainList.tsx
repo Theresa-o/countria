@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 
 const MainList = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [filterParam, setFilterParam] = useState("All");
 
   return (
     <div className="bg-veryLightGray">
@@ -16,11 +17,11 @@ const MainList = () => {
           />
         </div>
         <div className="flex flex-start mt-4 md:mt-0">
-          <Filter />
+          <Filter filterParam={filterParam} setFilterParam={setFilterParam} />
         </div>
       </div>
       <div>
-        <CountryCards searchQuery={searchQuery} />
+        <CountryCards searchQuery={searchQuery} filterParam={filterParam} />
       </div>
     </div>
   );
