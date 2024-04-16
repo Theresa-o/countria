@@ -66,58 +66,6 @@ const Filter = ({ filterParam, setFilterParam }: CountryFilterProps) => {
         </select>
       </div>
     </div>
-    // <div className="flex justify-center mt-2">
-    //   <div className="relative bg-white">
-    //     <button
-    //       onClick={toggleDropdown}
-    //       onChange={handleRegionChange}
-    //       value={selectedRegion}
-    //       className="flex items-center p-2 rounded-md border-none my-2"
-    //     >
-    //       <span className="pr-2">Filter by Region</span>
-    //       <svg
-    //         xmlns="http://www.w3.org/2000/svg"
-    //         fill="none"
-    //         viewBox="0 0 24 24"
-    //         strokeWidth={1.5}
-    //         stroke="currentColor"
-    //         className={`w-4 h-4 transition-transform transform ${
-    //           iconDirection === "up" ? "rotate-180" : ""
-    //         }`}
-    //       >
-    //         <path
-    //           strokeLinecap="round"
-    //           strokeLinejoin="round"
-    //           d={`M19 9l-7 7-7-7`}
-    //         />
-    //       </svg>
-    //     </button>
-    //     <ul
-    //       className={`absolute right-0 w-40 py-2 mt-2 bg-white rounded-lg shadow-xl ${
-    //         open ? "block" : "hidden"
-    //       }`}
-    //     >
-    //       {isLoading ? (
-    //         <li>Loading...</li>
-    //       ) : error ? (
-    //         <li>Error: {error.message}</li>
-    //       ) : (
-    //         data &&
-    //         data.map((region: any, index: number) => (
-    //           <li
-    //             key={index}
-    //             className={`flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100 ${
-    //               selectedRegion === region.name.common ? "bg-darkBlue" : ""
-    //             }`}
-    //             onClick={() => handleItemClick(region.name.common)}
-    //           >
-    //             {region.name.common}
-    //           </li>
-    //         ))
-    //       )}
-    //     </ul>
-    //   </div>
-    // </div>
   );
 };
 
