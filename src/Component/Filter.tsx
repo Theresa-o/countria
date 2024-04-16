@@ -1,47 +1,9 @@
-// import { useQuery } from "@tanstack/react-query";
-// import { useEffect, useState } from "react";
-
 interface CountryFilterProps {
   filterParam: string;
   setFilterParam: (param: string) => void;
 }
 
 const Filter = ({ filterParam, setFilterParam }: CountryFilterProps) => {
-  // const [open, setOpen] = useState(false);
-  // const [selectedRegion, setSelectedRegion] = useState("");
-  // const [iconDirection, setIconDirection] = useState("down");
-
-  // const [filterParam, setFilterParam] = useState("All");
-
-  // const {  data } = useQuery({
-  //   queryKey: ["region", selectedRegion],
-
-  //   queryFn: () =>
-  //     fetch(`https://restcountries.com/v3.1/region/${selectedRegion}`).then(
-  //       (res) => res.json()
-  //     ),
-  // });
-
-  // const toggleDropdown = () => {
-  //   setOpen(!open);
-  //   setIconDirection(open ? "down" : "up");
-  // };
-
-  // const handleItemClick = (item: string) => {
-  //   setSelectedRegion(item);
-  // };
-
-  // const handleRegionChange = (event: any) => {
-  //   setSelectedRegion(event.target.value);
-  // };
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setSelectedRegion(data);
-  //     console.log("Selected Region:", selectedRegion);
-  //   }
-  // }, [selectedRegion]);
-
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilterParam(event.target.value);
   };
