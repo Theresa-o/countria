@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import moonlight from "../assets/moonlight.svg";
 import star from "../assets/star.svg";
 
@@ -17,7 +18,9 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
     >
       <div className="mx-7 justify-between flex">
         <div className="navbar-question">
-          <h2 className="text-lg font-bold">Where in the world?</h2>
+          <Link to="/">
+            <h2 className="text-lg font-bold">Where in the world?</h2>
+          </Link>
         </div>
         <div
           onClick={toggleTheme}
