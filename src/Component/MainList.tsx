@@ -3,12 +3,22 @@ import CountryCards from "./CountryCards";
 import Filter from "./Filter";
 import SearchBar from "./SearchBar";
 
-const MainList = () => {
+interface ColourModeProps {
+  theme: string | null;
+}
+
+const MainList = ({ theme }: ColourModeProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterParam, setFilterParam] = useState("All");
 
   return (
-    <div className="bg-veryLightGray">
+    <div
+      className={`${
+        theme === "dark"
+          ? "bg-veryDarkBlue text-white"
+          : "bg-veryLightGray text-veryDarkBlue"
+      }`}
+    >
       <div className="mx-4 flex justify-start flex-col md:flex-row md:justify-between md:mx-6 md:w-[768]">
         <div>
           <SearchBar
