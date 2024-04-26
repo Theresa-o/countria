@@ -4,7 +4,7 @@ import Filter from "./Filter";
 import SearchBar from "./SearchBar";
 
 interface ColourModeProps {
-  theme: string | null;
+  theme: string;
 }
 
 const MainList = ({ theme }: ColourModeProps) => {

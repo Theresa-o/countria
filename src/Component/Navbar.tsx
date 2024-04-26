@@ -2,7 +2,7 @@ import moonlight from "../assets/moonlight.svg";
 import star from "../assets/star.svg";
 
 interface NavbarProps {
-  theme: string | null;
+  theme: string;
   toggleTheme: () => void;
 }
 
